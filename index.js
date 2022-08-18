@@ -97,18 +97,27 @@ console.log(myCorvette.tank);
         + Should return a string "Playing with x", x being the favorite toy.
 */
 
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy
 }
 
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function() {
+  return ("Playing with " + this.favoriteToy);
+}
+
+const newBaby = new Baby('Lucy', 4, 'Princess dress');
+console.log(newBaby.play);
+console.log(newBaby.favoriteToy);
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Window context - global context, no specific context
+  2. Implicit context - this is whatever is to the right of the . when called or invoked
+  3. Explicit context - using the call or apply methods
+  4. new object binding - using a constructor function 
 */
 
 ///////// END OF CHALLENGE /////////
